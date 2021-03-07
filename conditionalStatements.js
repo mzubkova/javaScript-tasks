@@ -72,3 +72,5 @@ function getMark(rating) {
       break;
   }
 }
+
+console.log(getMark());

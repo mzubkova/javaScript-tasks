@@ -3,7 +3,7 @@
 function sumOfEvenNumbers(min, max) {
   let sum = 0;
   for (let i = min; i <= max; i++) {
-    i % 2 === 0 ? (sum += i) : false;
+    sum = i % 2 === 0 ? (sum += i) : sum;
   }
   return sum;
 }
@@ -17,8 +17,37 @@ const simpleNumber = (number) => {
 
 // 3.	Найти корень натурального числа с точностью до целого (рассмотреть вариант последовательного подбора и метод бинарного поиска)
 
+function getSqrtOfNumber(number) {
+  for (let i = 1; ; i++) {
+    let sqrt = i * i;
+    if (number == sqrt) {
+      return i;
+    } else if (number < sqrt) {
+      return i - 1;
+    }
+  }
+}
 
+console.log(getSqrtOfNumber(64, 66666666));
 
+console.log(Math.sqrt(4096));
+
+function binarySearch(number) {
+  let minValue = 1;
+  let maxValue = number;
+  let prevState = 0;
+  while (true) {
+    let middleValue = (minValue + maxValue) / 2;
+    if (prevState == middleValue) return middleValue;
+    let middleValueSum = middleValue * middleValue;
+    if (number == middleValueSum) return middleValue;
+    if (number < middleValueSum) maxValue = middleValue;
+    else minValue = middleValue;
+    prevState = middleValue;
+  }
+}
+
+console.log(+binarySearch(128).toFixed(0));
 // 4.	Вычислить факториал числа n. n! = 1*2*…*n-1*n;
 
 function getFactorial(n) {

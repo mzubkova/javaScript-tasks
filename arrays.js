@@ -60,3 +60,58 @@ const oddElements = () => {
   });
   return newArr.length;
 };
+
+// 8.	Поменять местами первую и вторую половину массива, например, для массива
+// 1 2 3 4, результат 3 4 1 2
+
+const arrNumb = [1, 2, 3, 4];
+const getMixOfArray = () => {
+  let newArray = [];
+  return (newArray = arrNumb.slice(-2).concat(arrNumb.slice(0, 2)));
+};
+
+// 9.	Отсортировать массив (пузырьком (Bubble), выбором (Select), вставками (Insert))
+
+const bubbleSort = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temporary = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temporary;
+      }
+    }
+  }
+
+  return arr;
+};
+
+const selectSort = (arr) => {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let indexMin = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[indexMin] > arr[j]) {
+        indexMin = j;
+      }
+    }
+    if (indexMin !== i) {
+      [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]];
+    }
+  }
+  return arr;
+};
+
+const insertSort = (arr) => {
+  for (let i = 1; i < arr.length; i++) {
+    const current = arr[i];
+    let j = i;
+    while (j > 0 && arr[j - 1] > current) {
+      arr[j] = arr[j - 1];
+      j--;
+    }
+    arr[j] = current;
+  }
+  return arr;
+};
+
+// 10.	Отсортировать массив (Quick, Merge, Shell, Heap)
