@@ -1,12 +1,12 @@
 // 1.	Найти минимальный элемент массива
 
-const arrNumbers = [1, 888, 10, 67, -17, 45];
-const arrSome = ["Julie", "Tom", 1, 677.5, [5, 6, 7]];
+var arrNumbers = [1, 888, 10, 67, -17, 45];
+var arrSome = ["Julie", "Tom", 1, 677.5, [5, 6, 7]];
 
 function getLeastNumber() {
-  let leastNumber = 0;
-  for (let i = 0; i < arrNumbers.length; i++) {
-    const currentNumber = arrNumbers[i];
+  var leastNumber = 0;
+  for (var i = 0; i < arrNumbers.length; i++) {
+    var currentNumber = arrNumbers[i];
     if (currentNumber < leastNumber) {
       leastNumber = currentNumber;
     }
@@ -14,69 +14,84 @@ function getLeastNumber() {
   return leastNumber;
 }
 
-// const getMinElement = (number) => Math.min(...number);
-
 // 2.	Найти максимальный элемент массива
 
 function getBiggestNumber() {
-  let biggestNumber = 0;
-  arrNumbers.forEach((currentNumber) => {
+  var biggestNumber = 0;
+  for (var i = 0; i < arrNumbers.length; i++) {
+    var currentNumber = arrNumbers[i];
     if (currentNumber > biggestNumber) {
       biggestNumber = currentNumber;
     }
-  });
+  }
   return biggestNumber;
 }
 
-// const getMaxElement = (number) => Math.max(...number);
+// function getBiggestNumber() {
+//   var biggestNumber = 0;
+//   arrNumbers.forEach((currentNumber) => {
+//     if (currentNumber > biggestNumber) {
+//       biggestNumber = currentNumber;
+//     }
+//   });
+//   return biggestNumber;
+// }
 
 // 3.	Найти индекс минимального элемента массива
 
-const getIndexOfMin = () => arrNumbers.indexOf(getLeastNumber());
+function getIndexOfMin() {
+  return arrNumbers.indexOf(getLeastNumber());
+}
 
 // 4.	Найти индекс максимального элемента массива
 
-const getIndexOfMax = () => arrNumbers.indexOf(getBiggestNumber());
+function getIndexOfMax() {
+  return arrNumbers.indexOf(getBiggestNumber());
+}
 
 // 5.	Посчитать сумму элементов массива с нечетными индексами
 
-const sumOfOddIndex = () =>
-  arrNumbers.reduce((acc, el, i) => {
+function sumOfOddIndex2() {
+  return arrNumbers.reduce(function (acc, el, i) {
     if (i % 2) return acc + el;
     return acc;
   }, 0);
+}
 
 // 6.	Сделать реверс массива (массив в обратном направлении)
 
-const getReverseNumber = arrSome.map(arrSome.pop, [...arrSome]);
-
-// const reverseArr = () => arrSome.reverse();
+function getReverseNumber() {
+  if (Array.isArray(arrSome)) {
+    return arrSome.map(arrSome.pop, [].concat(arrSome));
+  }
+}
 
 // 7.	Посчитать количество нечетных элементов массива
 
-const oddElements = () => {
-  const newArr = arrSome.filter((el, index) => {
+function oddElements() {
+  var newArr = arrSome.filter(function (el, index) {
     if (index % 2) return el;
   });
   return newArr.length;
-};
+}
 
 // 8.	Поменять местами первую и вторую половину массива, например, для массива
 // 1 2 3 4, результат 3 4 1 2
 
-const arrNumb = [1, 2, 3, 4];
-const getMixOfArray = () => {
-  let newArray = [];
+var arrNumb = [1, 2, 3, 4];
+
+function getMixOfArray() {
+  var newArray = [];
   return (newArray = arrNumb.slice(-2).concat(arrNumb.slice(0, 2)));
-};
+}
 
 // 9.	Отсортировать массив (пузырьком (Bubble), выбором (Select), вставками (Insert))
 
-const bubbleSort = (arr) => {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - 1 - i; j++) {
+function bubbleSort(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr.length - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
-        let temporary = arr[j];
+        var temporary = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temporary;
       }
@@ -84,27 +99,29 @@ const bubbleSort = (arr) => {
   }
 
   return arr;
-};
+}
 
-const selectSort = (arr) => {
-  for (let i = 0; i < arr.length - 1; i++) {
-    let indexMin = i;
-    for (let j = i + 1; j < arr.length; j++) {
+function selectSort(arr) {
+  for (var i = 0; i < arr.length - 1; i++) {
+    var indexMin = i;
+    for (var j = i + 1; j < arr.length; j++) {
       if (arr[indexMin] > arr[j]) {
         indexMin = j;
       }
     }
     if (indexMin !== i) {
-      [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]];
+      var _ref = [arr[indexMin], arr[i]];
+      arr[i] = _ref[0];
+      arr[indexMin] = _ref[1];
     }
   }
   return arr;
-};
+}
 
-const insertSort = (arr) => {
-  for (let i = 1; i < arr.length; i++) {
-    const current = arr[i];
-    let j = i;
+function insertSort(arr) {
+  for (var i = 1; i < arr.length; i++) {
+    var current = arr[i];
+    var j = i;
     while (j > 0 && arr[j - 1] > current) {
       arr[j] = arr[j - 1];
       j--;
@@ -112,6 +129,6 @@ const insertSort = (arr) => {
     arr[j] = current;
   }
   return arr;
-};
+}
 
 // 10.	Отсортировать массив (Quick, Merge, Shell, Heap)

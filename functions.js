@@ -1,6 +1,6 @@
 // 1.	Получить строковое название дня недели по номеру дня.
 
-const arrWeek = [
+var arrWeek = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -10,24 +10,24 @@ const arrWeek = [
   "Saturday",
 ];
 
-const nameOfDay = () => {
-  let date = new Date();
-  let number = date.getDay();
+function nameOfDay() {
+  var date = new Date();
+  var number = date.getDay();
   return arrWeek[number];
-};
+}
 
 // 2.	Найти расстояние между двумя точками в двухмерном декартовом пространстве.
 
-const distancePoints = () => {
-  let x = [0, 1];
-  let y = [2, -2];
-  let res = Math.sqrt(Math.pow(y[0] - x[0], 2) + Math.pow(y[1] - x[1], 2));
+function distancePoints() {
+  var x = [0, 1];
+  var y = [2, -2];
+  var res = Math.sqrt(Math.pow(y[0] - x[0], 2) + Math.pow(y[1] - x[1], 2));
   return +res.toFixed(2);
-};
+}
 
 // 3.	Вводим число(0-999), получаем строку с прописью числа.
 
-const arrUnits = [
+var arrUnits = [
   "",
   "one",
   "two",
@@ -41,7 +41,7 @@ const arrUnits = [
   "ten",
 ];
 
-const arrTens = [
+var arrTens = [
   "ten",
   "eleven",
   "twelve",
@@ -54,7 +54,7 @@ const arrTens = [
   "nineteen",
 ];
 
-const arrTens2 = [
+var arrTens2 = [
   "",
   "",
   "twenty",
@@ -67,7 +67,7 @@ const arrTens2 = [
   "ninety",
 ];
 
-const arrHundreds = [
+var arrHundreds = [
   "",
   "one hundred",
   "two hundred",
@@ -80,11 +80,11 @@ const arrHundreds = [
   "nine hundred",
 ];
 
-let numberInput = +prompt("Enter a random number from 0 to 999");
+var numberInput = +prompt("Enter a random number from 0 to 999");
 
 function getStringFromNumbers() {
   if (numberInput === 0) {
-    return `${numberInput} is zero`;
+    return numberInput + " is zero";
   }
 
   while (
@@ -97,34 +97,30 @@ function getStringFromNumbers() {
     numberInput = +prompt("Enter a number again");
   }
 
-  let str = "";
-
-  let firstIndex = Math.floor(numberInput / 100);
-
+  var str = "";
+  var firstIndex = Math.floor(numberInput / 100);
   str = str + arrHundreds[firstIndex];
-
-  let numberSlice = numberInput % 100;
-
-  let secondIndex = Math.floor(numberSlice / 10);
-
-  let lastIndex = Math.floor(numberSlice % 10);
+  var numberSlice = numberInput % 100;
+  var secondIndex = Math.floor(numberSlice / 10);
+  var lastIndex = Math.floor(numberSlice % 10);
 
   if (secondIndex > 1 && lastIndex !== 0) {
-    str = `${numberInput} is ${str} ${arrTens2[secondIndex]}`;
-    str = `${str} ${arrUnits[lastIndex]}`;
+    str = numberInput + " is " + str + " " + arrTens2[secondIndex];
+    str = str + " " + arrUnits[lastIndex];
   } else if (secondIndex === 0) {
-    str = `${str} ${arrTens2[secondIndex]}`;
-    str = `${str} ${arrUnits[lastIndex]}`;
+    str = str + " " + arrTens2[secondIndex];
+    str = str + " " + arrUnits[lastIndex];
   } else if (secondIndex > 1 && lastIndex === 0) {
-    str = `${str} ${arrTens2[secondIndex]}`;
+    str = str + " " + arrTens2[secondIndex];
   } else if (secondIndex === 1) {
-    str = `${str} ${arrTens[lastIndex]}`;
+    str = str + " " + arrTens[lastIndex];
   } else {
     console.log("error");
   }
 
   return str;
 }
+
 alert(getStringFromNumbers());
 
 // 4.	Вводим строку, которая содержит число, написанное прописью (0-999). Получить само число
