@@ -18,9 +18,7 @@ function nameOfDay() {
 
 // 2.	Найти расстояние между двумя точками в двухмерном декартовом пространстве.
 
-function distancePoints() {
-  var x = [0, 1];
-  var y = [2, -2];
+function distancePoints(x, y) {
   var res = Math.sqrt(Math.pow(y[0] - x[0], 2) + Math.pow(y[1] - x[1], 2));
   return +res.toFixed(2);
 }
@@ -80,9 +78,7 @@ var arrHundreds = [
   "nine hundred",
 ];
 
-var numberInput = +prompt("Enter a random number from 0 to 999");
-
-function getStringFromNumbers() {
+function getStringFromNumbers(numberInput) {
   if (numberInput === 0) {
     return numberInput + " is zero";
   }
@@ -93,8 +89,7 @@ function getStringFromNumbers() {
     !Number.isInteger(numberInput) ||
     numberInput > 999
   ) {
-    alert("Incorrect number");
-    numberInput = +prompt("Enter a number again");
+    return "Incorrect number";
   }
 
   var str = "";
@@ -115,13 +110,10 @@ function getStringFromNumbers() {
   } else if (secondIndex === 1) {
     str = str + " " + arrTens[lastIndex];
   } else {
-    console.log("error");
+    return "error";
   }
-
   return str;
 }
-
-alert(getStringFromNumbers());
 
 // 4.	Вводим строку, которая содержит число, написанное прописью (0-999). Получить само число
 // 5.	Для задания 2 расширить диапазон до 999 миллиардов

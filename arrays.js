@@ -1,9 +1,6 @@
 // 1.	Найти минимальный элемент массива
 
-var arrNumbers = [1, 888, 10, 67, -17, 45];
-var arrSome = ["Julie", "Tom", 1, 677.5, [5, 6, 7]];
-
-function getLeastNumber() {
+function getLeastNumber(arrNumbers) {
   var leastNumber = 0;
   for (var i = 0; i < arrNumbers.length; i++) {
     var currentNumber = arrNumbers[i];
@@ -16,7 +13,7 @@ function getLeastNumber() {
 
 // 2.	Найти максимальный элемент массива
 
-function getBiggestNumber() {
+function getBiggestNumber(arrNumbers) {
   var biggestNumber = 0;
   for (var i = 0; i < arrNumbers.length; i++) {
     var currentNumber = arrNumbers[i];
@@ -27,31 +24,35 @@ function getBiggestNumber() {
   return biggestNumber;
 }
 
-// function getBiggestNumber() {
-//   var biggestNumber = 0;
-//   arrNumbers.forEach((currentNumber) => {
-//     if (currentNumber > biggestNumber) {
-//       biggestNumber = currentNumber;
-//     }
-//   });
-//   return biggestNumber;
-// }
-
 // 3.	Найти индекс минимального элемента массива
 
-function getIndexOfMin() {
-  return arrNumbers.indexOf(getLeastNumber());
+function getIndexOfMin(arrNumbers) {
+  var leastNumber = 0;
+  for (var i = 0; i < arrNumbers.length; i++) {
+    var currentNumber = arrNumbers[i];
+    if (currentNumber < leastNumber) {
+      leastNumber = currentNumber;
+    }
+  }
+  return arrNumbers.indexOf(leastNumber);
 }
 
 // 4.	Найти индекс максимального элемента массива
 
-function getIndexOfMax() {
-  return arrNumbers.indexOf(getBiggestNumber());
+function getIndexOfMax(arrNumbers) {
+  var biggestNumber = 0;
+  for (var i = 0; i < arrNumbers.length; i++) {
+    var currentNumber = arrNumbers[i];
+    if (currentNumber > biggestNumber) {
+      biggestNumber = currentNumber;
+    }
+  }
+  return arrNumbers.indexOf(biggestNumber);
 }
 
 // 5.	Посчитать сумму элементов массива с нечетными индексами
 
-function sumOfOddIndex2() {
+function sumOfOddIndex2(arrNumbers) {
   return arrNumbers.reduce(function (acc, el, i) {
     if (i % 2) return acc + el;
     return acc;
@@ -60,16 +61,16 @@ function sumOfOddIndex2() {
 
 // 6.	Сделать реверс массива (массив в обратном направлении)
 
-function getReverseNumber() {
-  if (Array.isArray(arrSome)) {
-    return arrSome.map(arrSome.pop, [].concat(arrSome));
+function getReverseNumber(arr) {
+  if (Array.isArray(arr)) {
+    return arr.map(arr.pop, [].concat(arr));
   }
 }
 
 // 7.	Посчитать количество нечетных элементов массива
 
-function oddElements() {
-  var newArr = arrSome.filter(function (el, index) {
+function getOddElements(arr) {
+  var newArr = arr.filter(function (el, index) {
     if (index % 2) return el;
   });
   return newArr.length;
@@ -78,11 +79,21 @@ function oddElements() {
 // 8.	Поменять местами первую и вторую половину массива, например, для массива
 // 1 2 3 4, результат 3 4 1 2
 
-var arrNumb = [1, 2, 3, 4];
-
-function getMixOfArray() {
+function getReverseArray(arr) {
+  if (Array.isArray(arr) && !arr.length) {
+    return "Array is an array and is empty";
+  }
   var newArray = [];
-  return (newArray = arrNumb.slice(-2).concat(arrNumb.slice(0, 2)));
+  var halfArr = arr.length / 2;
+
+  if (arr.length % 2 === 0) {
+    return (newArray = arr.slice(halfArr).concat(arr.slice(0, halfArr)));
+  } else {
+    return (newArray = arr
+      .slice(-2)
+      .concat(arr.slice(0, halfArr))
+      .concat(arr[2]));
+  }
 }
 
 // 9.	Отсортировать массив (пузырьком (Bubble), выбором (Select), вставками (Insert))

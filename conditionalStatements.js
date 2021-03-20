@@ -1,8 +1,8 @@
 // 1.	Если а – четное посчитать а*б, иначе а+б
 
-function sumOfNumbers(a, b) {
+function sumOfNumbers(num1, num2) {
   var sum = 0;
-  a % 2 === 0 ? (sum = a * b) : (sum = a + b);
+  num1 % 2 === 0 ? (sum = num1 * num2) : (sum = num1 + num2);
   return sum;
 }
 
@@ -61,28 +61,28 @@ function getMaxNumber2(num1, num2, num3) {
 // 90-100	A
 
 function getMark(rating) {
-  rating = prompt("Enter your rating");
+  var result = "Your mark is ";
   switch (true) {
     case rating === 0 || rating <= 19:
-      alert("Your mark is F");
+      result += "F";
       break;
     case rating === 20 || rating <= 39:
-      alert("Your mark is E");
+      result += "E";
       break;
     case rating === 40 || rating <= 59:
-      alert("Your mark is D");
+      result += "D";
       break;
     case rating === 60 || rating <= 74:
-      alert("Your mark is C");
+      result += "C";
       break;
     case rating === 75 || rating <= 89:
-      alert("Your mark is B");
+      result += "B";
       break;
     case rating === 90 || rating <= 100:
-      alert("Your mark is A");
+      result += "A";
       break;
     default:
-      alert("Impossible :) ");
+      result += "Impossible :) ";
       break;
   }
 }
