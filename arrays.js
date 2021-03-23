@@ -52,28 +52,37 @@ function getIndexOfMax(arrNumbers) {
 
 // 5.	Посчитать сумму элементов массива с нечетными индексами
 
-function sumOfOddIndex2(arrNumbers) {
-  return arrNumbers.reduce(function (acc, el, i) {
-    if (i % 2) return acc + el;
-    return acc;
-  }, 0);
+function sumOfOddIndex(arrNumbers) {
+  var sum = 0;
+  for (let i = 0; i < arrNumbers.length; i++) {
+    var digit = arrNumbers[i];
+    if (i > 0 && i % 2 !== 0) sum += digit;
+  }
+  return sum;
 }
 
 // 6.	Сделать реверс массива (массив в обратном направлении)
 
-function getReverseNumber(arr) {
+function getReverseNumber2(arr) {
+  var newArr = [];
   if (Array.isArray(arr)) {
-    return arr.map(arr.pop, [].concat(arr));
+    for (let index = arr.length - 1; index >= 0; index--) {
+      var element = arr[index];
+      newArr.push(element);
+    }
+    return newArr;
   }
 }
 
 // 7.	Посчитать количество нечетных элементов массива
 
 function getOddElements(arr) {
-  var newArr = arr.filter(function (el, index) {
-    if (index % 2) return el;
-  });
-  return newArr.length;
+  var sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    var digit = arr[i];
+    if (digit > 0 && digit % 2 !== 0) sum += digit;
+  }
+  return sum;
 }
 
 // 8.	Поменять местами первую и вторую половину массива, например, для массива
