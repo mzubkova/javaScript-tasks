@@ -109,7 +109,7 @@ function showTriangleOfStars5(limit) {
     for (var j = 0; j < limit; j++) {
       if (i > 3) {
         output += whitespace;
-      } else if (i === 0 || i == limit - 1 - j || i == j) {
+      } else if (i === 0 || i === limit - 1 - j || i === j) {
         output += star;
       } else {
         output += whitespace + whitespace;
@@ -126,7 +126,7 @@ function showTriangleOfStars6(limit) {
     for (var j = 0; j < limit; j++) {
       if (i < 3) {
         output += whitespace;
-      } else if (i === limit - 1 || i === limit - 1 - j || i == j) {
+      } else if (i === limit - 1 || i === limit - 1 - j || i === j) {
         output += star;
       } else {
         output += whitespace + whitespace;
