@@ -1,94 +1,138 @@
-var line = 7;
-var star = "*";
 var whitespace = " ";
+var star = "* ";
+var newLine = "\n";
 
-function showSquareOfStars(star) {
+function showSquareOfStars(limit) {
   var output = "";
-  for (var i = 0; i < line; i++) {
-    for (var j = 0; j < line; j++) {
+  for (var i = 1; i < limit; i++) {
+    for (var j = 1; j < limit; j++) {
       output += star;
     }
-    output += `${star} \n`;
+    output += star + newLine;
   }
   return output;
 }
 
-console.log(showSquareOfStars(star));
-
-// function showSquareOfStars2(line) {
-//   var line1 = star.repeat(line);
-//   var output;
-//   var line2 = star + whitespace.repeat(line - 2) + star + "\n";
-//   if (line > 2) {
-//     output = line2.repeat(line - 2);
-//   } else {
-//     output = "";
-//   }
-//   output = line1 + "\n" + output;
-//   if (line > 2) output += line1;
-//   return output;
-// }
-
-// console.log(showSquareOfStars2(7));
-
-function showSquareOfStars3() {
-  var newLine = "\n";
+function showSquareOfStars2(limit) {
   var output = "";
-  // верхняя линия
-  for (let i = 0; i < line; ++i) output += star;
+  for (let i = 0; i < limit; ++i) output += star;
   output += newLine;
-  if (line > 2) {
-    for (let i = 0; i < line - 2; ++i) {
+  if (limit > 2) {
+    for (let i = 0; i < limit - 2; ++i) {
       output += star;
-      for (let j = 0; j < line - 2; ++j) output += whitespace;
+      for (let j = 0; j < limit - 2; ++j) output += whitespace + whitespace;
       output += star + newLine;
     }
   }
-  // нижняя линяя
-  if (line > 1) for (let i = 0; i < line; ++i) output += star;
+  if (limit > 1) for (let i = 0; i < limit; ++i) output += star;
   return output;
 }
 
-console.log(showSquareOfStars3());
-
-function showTriangleOfStars() {
-  var newLine = "\n";
+function showTriangleOfStars(limit) {
   var output = "";
-  // верхняя линия
-  for (let i = 0; i < line; ++i) output += star;
-  output += newLine;
-  if (line > 1) {
-    for (let i = 1; i < line; ++i) {
-      output += star;
-      if (i === 6) {
-        return output;
+  for (var i = 0; i < limit; i++) {
+    for (var j = 0; j < limit; j++) {
+      if (i === 0 || j === limit - 1 - i || j === 0) {
+        output += star;
       } else {
-        for (let j = line - 3; j >= i; --j) output += whitespace;
-        output += star + newLine;
+        output += whitespace + whitespace;
       }
     }
+    output += newLine;
   }
   return output;
 }
 
-console.log(showTriangleOfStars());
+function showTriangleOfStars2(limit) {
+  var output = "";
+  for (var i = 1; i <= limit; i++) {
+    for (var j = 1; j <= limit; j++) {
+      if (j === 1 || i === limit || j === i) {
+        output += star;
+      } else {
+        output += whitespace + whitespace;
+      }
+    }
+    output += newLine;
+  }
+  return output;
+}
 
-// function showTriangleOfStars2() {
-//   var newLine = "\n";
-//   var output = "";
-//   for (var f = 0; f < line; ++f) {
-//     output += newLine;
-//     for (var k = 1; k <= f; ++k) {
-//       output += star;
-//       if (k === 6) {
-//         return output;
-//       } else {
-//         for (let f = line - 5; f <= k; ++f) output += whitespace;
-//         output += star + newLine;
-//       }
-//     }
-//   }
-//   return output;
-// }
-// console.log(showTriangleOfStars2());
+function showTriangleOfStars3(limit) {
+  var output = "";
+  for (var i = 1; i <= limit; i++) {
+    for (var j = 1; j <= limit; j++) {
+      if (j === limit || i === limit || i === limit + 1 - j) {
+        output += star;
+      } else {
+        output += whitespace + whitespace;
+      }
+    }
+    output += newLine;
+  }
+  return output;
+}
 
+function showTriangleOfStars4(limit) {
+  var output = "";
+  for (var i = 1; i <= limit; i++) {
+    for (var j = 1; j <= limit; j++) {
+      if (j === limit || i === 1 || j === i) {
+        output += star;
+      } else {
+        output += whitespace + whitespace;
+      }
+    }
+    output += newLine;
+  }
+  return output;
+}
+
+function showCrossOfStars(limit) {
+  var output = "";
+  for (var i = 1; i <= limit; i++) {
+    for (var j = 1; j <= limit; j++) {
+      if (i === 0 || i === limit + 1 - j || j === i) {
+        output += star;
+      } else {
+        output += whitespace + whitespace;
+      }
+    }
+    output += newLine;
+  }
+  return output;
+}
+
+function showTriangleOfStars5(limit) {
+  var output = "";
+  for (var i = 0; i < limit; i++) {
+    for (var j = 0; j < limit; j++) {
+      if (i > 3) {
+        output += whitespace;
+      } else if (i === 0 || i == limit - 1 - j || i == j) {
+        output += star;
+      } else {
+        output += whitespace + whitespace;
+      }
+    }
+    output += newLine;
+  }
+  return output;
+}
+
+function showTriangleOfStars6(limit) {
+  var output = "";
+  for (var i = 0; i < limit; i++) {
+    for (var j = 0; j < limit; j++) {
+      if (i < 3) {
+        output += whitespace;
+      } else if (i === limit - 1 || i === limit - 1 - j || i == j) {
+        output += star;
+      } else {
+        output += whitespace + whitespace;
+      }
+    }
+    output += newLine;
+  }
+  return output;
+}
