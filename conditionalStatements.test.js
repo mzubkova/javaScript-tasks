@@ -61,6 +61,9 @@ describe("test sum of positive numbers", function () {
   it("should work with three arguments", function () {
     expect(sumOfPositive(1, 2, 3)).toBe(6);
   });
+  it("should work with a positive number", function () {
+    expect(sumOfPositive(-1, -2, -3)).toBe("not a positive number");
+  });
 });
 
 describe("test max number", function () {
@@ -108,5 +111,8 @@ describe("test sum of positive numbers", function () {
   });
   it("should work with numbers 90-100", function () {
     expect(getMark(90, 100)).toBe("Your mark is A");
+  });
+  it("should work with numbers 0-100", function () {
+    expect(getMark(101)).toBe("Your mark is impossible :)");
   });
 });

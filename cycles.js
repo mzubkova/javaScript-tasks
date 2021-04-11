@@ -1,6 +1,9 @@
 // 1.	Найти сумму четных чисел и их количество в диапазоне от 1 до 99
 
 function sumOfEvenNumbers(min, max) {
+  if (typeof min !== "number" || typeof max !== "number") {
+    return "Not a number";
+  }
   var sum = 0;
   for (var i = min; i <= max; i++) {
     sum = i % 2 === 0 ? (sum += i) : sum;
@@ -10,14 +13,20 @@ function sumOfEvenNumbers(min, max) {
 
 // 2.	Проверить простое ли число? (число называется простым, если оно делится только само на себя и на 1)
 
-function simpleNumber2(number) {
+function checkSimpleNumber(number) {
+  if (typeof number !== "number") {
+    return "Not a number";
+  }
   for (var i = 2; i < number; i++) if (number % i === 0) return false;
-  return number > 1;
+  return true;
 }
 
 // 3.	Найти корень натурального числа с точностью до целого (рассмотреть вариант последовательного подбора и метод бинарного поиска)
 
 function getSqrtOfNumber(number) {
+  if (typeof number !== "number") {
+    return "Not a number";
+  }
   for (var i = 1; ; i++) {
     var sqrt = i * i;
     if (number == sqrt) {
@@ -29,6 +38,9 @@ function getSqrtOfNumber(number) {
 }
 
 function binarySearch(number) {
+  if (typeof number !== "number") {
+    return "Not a number";
+  }
   var minValue = 1;
   var maxValue = number;
   var prevState = 0;
@@ -46,6 +58,9 @@ function binarySearch(number) {
 // 4.	Вычислить факториал числа n. n! = 1*2*…*n-1*n;
 
 function getFactorial(n) {
+  if (typeof n !== "number") {
+    return "Not a number";
+  }
   var total = 1;
   for (var i = 0; i < n; i++) {
     total = total * (n - i);
@@ -57,6 +72,10 @@ function getFactorial(n) {
 
 function sumOfDigits(n) {
   var total = 0;
+
+  if (typeof n !== "number") {
+    return "Not a number";
+  }
 
   while (n > 0) {
     total += n % 10;
@@ -71,6 +90,10 @@ function sumOfDigits(n) {
 function getReverseNumber(n) {
   result = 0;
 
+  if (typeof n !== "number") {
+    return "Not a number";
+  }
+
   while (n) {
     result *= 10;
     result += n % 10;
@@ -79,3 +102,13 @@ function getReverseNumber(n) {
   }
   return result;
 }
+
+module.exports = {
+  sumOfEvenNumbers,
+  checkSimpleNumber,
+  getSqrtOfNumber,
+  binarySearch,
+  getFactorial,
+  sumOfDigits,
+  getReverseNumber,
+};

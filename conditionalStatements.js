@@ -101,7 +101,7 @@ function getMark(rating) {
       result += "A";
       break;
     default:
-      result += "Impossible :) ";
+      result += "impossible :)";
       break;
   }
   return result;
