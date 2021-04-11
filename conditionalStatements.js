@@ -1,6 +1,9 @@
 // 1.	Если а – четное посчитать а*б, иначе а+б
 
 function sumOfNumbers(num1, num2) {
+  if (typeof num1 !== "number" || typeof num2 !== "number") {
+    return "Not a number";
+  }
   var sum = 0;
   num1 % 2 === 0 ? (sum = num1 * num2) : (sum = num1 + num2);
   return sum;
@@ -9,6 +12,9 @@ function sumOfNumbers(num1, num2) {
 // 2.	Определить какой четверти принадлежит точка с координатами (х,у)
 
 function getQuarter(x, y) {
+  if (typeof x !== "number" || typeof y !== "number") {
+    return "Not a number";
+  }
   var quarter = "";
   if (x > 0 && y > 0) {
     quarter = "Точка находится в четверти I";
@@ -25,31 +31,41 @@ function getQuarter(x, y) {
 // 3.	Найти суммы только положительных из трех чисел
 
 function sumOfPositive(num1, num2, num3) {
-  var res = 0;
-  if (num1 > 0 && num2 > 0 && num3 > 0) {
-    res = num1 + num2 + num3;
-  } else {
-    console.log("not a positive number");
+  if (
+    typeof num1 !== "number" ||
+    typeof num2 !== "number" ||
+    typeof num3 !== "number"
+  ) {
+    return "Not a number";
   }
-  return res;
+  var result = 0;
+  if (num1 > 0 && num2 > 0 && num3 > 0) {
+    result = num1 + num2 + num3;
+  } else {
+    return "not a positive number";
+  }
+  return result;
 }
 
 // 4.	Посчитать выражение (макс(а*б*с, а+б+с))+3
 
-function getMaxNumber2(num1, num2, num3) {
-  if (!Number(num1) || !Number(num2) || !Number(num3)) {
+function getMaxNumber(num1, num2, num3) {
+  if (
+    typeof num1 !== "number" ||
+    typeof num2 !== "number" ||
+    typeof num3 !== "number"
+  ) {
     return "Not a number";
-  } else {
-    var result = 0;
-    var sum1 = num1 * num2 * num3;
-    var sum2 = num1 + num2 + num3;
-    if (sum1 > 2) {
-      result = sum1 + 3;
-    } else {
-      result = sum2 + 3;
-    }
-    return result;
   }
+  var result = 0;
+  var sum1 = num1 * num2 * num3;
+  var sum2 = num1 + num2 + num3;
+  if (sum1 > sum2) {
+    result = sum1 + 3;
+  } else {
+    result = sum2 + 3;
+  }
+  return result;
 }
 
 // 5.	Написать программу определения оценки студента по его рейтингу, на основе следующих правил
@@ -61,6 +77,9 @@ function getMaxNumber2(num1, num2, num3) {
 // 90-100	A
 
 function getMark(rating) {
+  if (typeof rating !== "number") {
+    return "Not a number";
+  }
   var result = "Your mark is ";
   switch (true) {
     case rating === 0 || rating <= 19:
@@ -85,4 +104,13 @@ function getMark(rating) {
       result += "Impossible :) ";
       break;
   }
+  return result;
 }
+
+module.exports = {
+  sumOfNumbers,
+  getQuarter,
+  sumOfPositive,
+  getMaxNumber,
+  getMark,
+};
