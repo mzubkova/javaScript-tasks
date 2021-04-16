@@ -1,8 +1,11 @@
 // 1.	Найти минимальный элемент массива
 
 function getLeastNumber(arrNumbers) {
-  var leastNumber = 0;
-  for (var i = 0; i < arrNumbers.length; i++) {
+  if (!Array.isArray(arrNumbers)) {
+    return "Not an array";
+  }
+  var leastNumber = arrNumbers[0];
+  for (var i = 1; i < arrNumbers.length; i++) {
     var currentNumber = arrNumbers[i];
     if (currentNumber < leastNumber) {
       leastNumber = currentNumber;
@@ -14,6 +17,9 @@ function getLeastNumber(arrNumbers) {
 // 2.	Найти максимальный элемент массива
 
 function getBiggestNumber(arrNumbers) {
+  if (!Array.isArray(arrNumbers)) {
+    return "Not an array";
+  }
   var biggestNumber = 0;
   for (var i = 0; i < arrNumbers.length; i++) {
     var currentNumber = arrNumbers[i];
@@ -27,11 +33,15 @@ function getBiggestNumber(arrNumbers) {
 // 3.	Найти индекс минимального элемента массива
 
 function getIndexOfMin(arrNumbers) {
-  var leastNumber = 0;
+  if (!Array.isArray(arrNumbers)) {
+    return "Not an array";
+  }
+  var leastNumber = arrNumbers[0];
   for (var i = 0; i < arrNumbers.length; i++) {
     var currentNumber = arrNumbers[i];
     if (currentNumber < leastNumber) {
       leastNumber = currentNumber;
+      console.log(leastNumber);
     }
   }
   return arrNumbers.indexOf(leastNumber);
@@ -40,6 +50,9 @@ function getIndexOfMin(arrNumbers) {
 // 4.	Найти индекс максимального элемента массива
 
 function getIndexOfMax(arrNumbers) {
+  if (!Array.isArray(arrNumbers)) {
+    return "Not an array";
+  }
   var biggestNumber = 0;
   for (var i = 0; i < arrNumbers.length; i++) {
     var currentNumber = arrNumbers[i];
@@ -53,6 +66,9 @@ function getIndexOfMax(arrNumbers) {
 // 5.	Посчитать сумму элементов массива с нечетными индексами
 
 function sumOfOddIndex(arrNumbers) {
+  if (!Array.isArray(arrNumbers)) {
+    return "Not an array";
+  }
   var sum = 0;
   for (let i = 0; i < arrNumbers.length; i++) {
     var digit = arrNumbers[i];
@@ -63,11 +79,14 @@ function sumOfOddIndex(arrNumbers) {
 
 // 6.	Сделать реверс массива (массив в обратном направлении)
 
-function getReverseNumber2(arr) {
+function getReverseNumber(arrNumbers) {
+  if (!Array.isArray(arrNumbers)) {
+    return "Not an array";
+  }
   var newArr = [];
-  if (Array.isArray(arr)) {
-    for (let index = arr.length - 1; index >= 0; index--) {
-      var element = arr[index];
+  if (Array.isArray(arrNumbers)) {
+    for (let index = arrNumbers.length - 1; index >= 0; index--) {
+      var element = arrNumbers[index];
       newArr.push(element);
     }
     return newArr;
@@ -77,6 +96,9 @@ function getReverseNumber2(arr) {
 // 7.	Посчитать количество нечетных элементов массива
 
 function getOddElements(arr) {
+  if (!Array.isArray(arr)) {
+    return "Not an array";
+  }
   var sum = 0;
   for (let i = 0; i < arr.length; i++) {
     var digit = arr[i];
@@ -89,8 +111,8 @@ function getOddElements(arr) {
 // 1 2 3 4, результат 3 4 1 2
 
 function getReverseArray(arr) {
-  if (Array.isArray(arr) && !arr.length) {
-    return "Array is an array and is empty";
+  if (!Array.isArray(arr)) {
+    return "Not an array";
   }
   var newArray = [];
   var halfArr = arr.length / 2;
@@ -108,6 +130,9 @@ function getReverseArray(arr) {
 // 9.	Отсортировать массив (пузырьком (Bubble), выбором (Select), вставками (Insert))
 
 function bubbleSort(arr) {
+  if (!Array.isArray(arr)) {
+    return "Not an array";
+  }
   for (var i = 0; i < arr.length; i++) {
     for (var j = 0; j < arr.length - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
@@ -122,6 +147,9 @@ function bubbleSort(arr) {
 }
 
 function selectSort(arr) {
+  if (!Array.isArray(arr)) {
+    return "Not an array";
+  }
   for (var i = 0; i < arr.length - 1; i++) {
     var indexMin = i;
     for (var j = i + 1; j < arr.length; j++) {
@@ -139,6 +167,9 @@ function selectSort(arr) {
 }
 
 function insertSort(arr) {
+  if (!Array.isArray(arr)) {
+    return "Not an array";
+  }
   for (var i = 1; i < arr.length; i++) {
     var current = arr[i];
     var j = i;
@@ -152,3 +183,17 @@ function insertSort(arr) {
 }
 
 // 10.	Отсортировать массив (Quick, Merge, Shell, Heap)
+
+module.exports = {
+  getLeastNumber,
+  getBiggestNumber,
+  getIndexOfMin,
+  getIndexOfMax,
+  sumOfOddIndex,
+  getReverseNumber,
+  getOddElements,
+  getReverseArray,
+  bubbleSort,
+  selectSort,
+  insertSort,
+};
