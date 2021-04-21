@@ -47,32 +47,60 @@ function getNumber(array) {
 // объектов, которые содержат в своих заголовках заданную строку в
 // качестве второго параметра (без учета регистра).
 
-// function findTitle(array, ‘string’) {
-// return [{title has this substring}]
-// }
-// findTitle (arr, str) {
+let arr = [
+  {
+    title: "Some title1",
+  },
+  {
+    title: "I like JS",
+  },
+  {
+    user: "This obj doesn’t have key title js",
+  },
+  {
+    title: "Js - is the best!",
+  },
+];
 
-// }
+function findTitle(array, str) {
+  var strLow = str.toLowerCase();
+  var newArr = [];
+  newArr = array.slice(0, 2).concat(array.slice(3, 4));
+  var result = [];
 
-// let arr = [{
-// title: 'Some title1'
-// }, {
-// title: 'I like JS'
-// }, {
-// user: 'This obj doesn\’t have key title js'
-// }, {
-// title: 'Js - is the best!'
-// }];
+  newArr.forEach(function (item) {
+    var itemLow = item.title.toLowerCase();
+    if (itemLow.includes(strLow)) result.push(item);
+  });
+  return result;
+}
+
 // findTitle(arr, 'js'); // return [{ title: 'I like JS'}, { title: 'Js - is the best!' }]
 
 // 4. Принимая строку, ваша функция должна вернуть обьект, в котором
 // ключи – символы строки, значение – количество повторений символов в
 // строке
-// function countCharacters(string) {
-// let result;
-// //Your code here
-// return result;
-// }
+
+function countCharacters(string) {
+  var result = {};
+  var maxLetterValue = 0;
+  var maxLetter = "";
+  for (var letter of string) {
+    if (result.hasOwnProperty(letter)) {
+      result[letter]++;
+    } else {
+      result[letter] = 1;
+    }
+  }
+  for (var key in result) {
+    if (result[key] > maxLetterValue) {
+      maxLetter = result[key];
+      maxLetter = key;
+    }
+  }
+  return result;
+}
+
 // countCharacters(‘sparrow’) // should return {s: 1, p: 1, a: 1, r: 2, o: 1, w: 1}
 // countCharacters(‘aabcddeffge’) // should return {a: 2, b: 1, c: 1, d: 2, e: 2, f: 2,
 // g: 1}
@@ -83,11 +111,20 @@ function getNumber(array) {
 // Палиндром - это слово, фраза, число или другая последовательность
 // символов, которая читается так же, как вперед и назад, например,
 // «мадам».
-// function getNextPalindrome(number) {
-// let result;
-// //Your code here
-// return result;
-// }
+
+function getNextPalindrome(number) {
+  var result;
+  var numToString = number.toString();
+
+  for (var i = 0; i < numToString.length / 2; i++) {
+    if (numToString[i] == numToString[numToString.length - 1 - i]) {
+      return "It's not a palindrome";
+    }
+  }
+
+  return "It's a palindrome";
+}
+
 // getNextPalindrome(7) // returns 11
 // getNextPalindrome(99) //returns 101
 // getNextPalindrome(132) // returns 141
