@@ -14,23 +14,45 @@
 // * принимает массив из очереди людей
 // * возвращает строку
 
-// //Примеры:
-// tickets([25, 25, 50]); // => YES
-// tickets([25, 100]); // => NO. Vasya will not have enough money to
-// give change to 100 dollars
-// tickets([25, 25, 50, 100]); // Yes
-// tickets([25, 50, 100]); // No
-// tickets([‘25’, ‘25’, ‘50’, ‘100’]); // Yes
-// tickets([‘25’, ‘50’, ‘100’]); // No
-// или используя prompt
-
 function tickets(person) {
-  if (!Array.isArray(arr)) {
+  if (!Array.isArray(person)) {
     return "Not an array";
   }
+
+  var currency25 = 0;
+  var currency50 = 0;
+  for (var i = 0; i < person.length; i++) {
+    if (+person[i] === 25) {
+      currency25 += 1;
+    }
+    if (+person[i] === 50) {
+      currency25 -= 1;
+      currency50 += 1;
+    }
+    if (+person[i] === 100) {
+      if (currency50 == 0 && currency25 >= 3) {
+        currency25 -= 3;
+      } else {
+        currency25 -= 1;
+        currency50 -= 1;
+      }
+    }
+    if (currency25 < 0 || currency50 < 0) {
+      return "NO";
+    }
+  }
+  return "YES";
 }
 
-tickets([25, 25, 50]);
+// console.log("NO______", tickets([25, 100]));
+// console.log("NO______", tickets([25, 25, 100]));
+// console.log("YES_______", tickets([25, 25, 50]));
+// console.log("NO_______", tickets([25, 50, 100]));
+// // console.log("YES_______", tickets([25, 25, 50, 100]));
+// console.log("YES_______", tickets(["25", "25", "50", "100"]));
+// console.log("NO_______", tickets(["25", "50", "100"]));
+
+// или используя prompt
 
 // 2. Напишите функцию, которая получает два бесконечных числа в
 // виде строк. Вы должны вернуть результат суммы этих двух чисел
@@ -41,13 +63,13 @@ tickets([25, 25, 50]);
 // ’23333333333333333333333333333333333333333333333333’)
 // -> ‘3444444.......4444444’
 
-function getSum(person) {
-  if (typeof person !== "string") {
-    return "Not a string";
-  }
-}
+// function getSum(person) {
+//   if (typeof person !== "string") {
+//     return "Not a string";
+//   }
+// }
 
-getSum("123", "324");
+// getSum("123", "324");
 
 // 3. Создайте функцию, которая получает два аргумента: первый -
 // это массив объектов, второй - строка (имя автора). Ваша
@@ -55,7 +77,7 @@ getSum("123", "324");
 // аргумента функции и комментариев с тем же автором. Пример
 // массива:
 
-let listOfPosts2 = [
+var listOfPosts2 = [
   {
     id: 1,
     post: "some post1",
@@ -116,16 +138,17 @@ let listOfPosts2 = [
   },
 ];
 
-function getQuntityPostsByAuthor (listOfPosts1, 'Rimus') {
+// function getQuntityPostsByAuthor(array, author) {
+// }
 
-}
+// console.log(getQuntityPostsByAuthor(listOfPosts2, "Rimus"));
 // result -> post -1, comments – 3
 
 // 4.Напишите функцию кеш
-var complexFunction = function (arg1,arg2) {
-// return arg1+arg2; //just for example (any logic can be here)
-}
-var cachedFunc = cache(complexFunction);
+// var complexFunction = function (arg1,arg2) {
+// // return arg1+arg2; //just for example (any logic can be here)
+// }
+// var cachedFunc = cache(complexFunction);
 // cachedFunc(‘foo’, ‘bar’) // complexFunction должна выполнится
 // cachedFunc(‘foo’, ‘bar’) // complexFunction не должна выполняться
 // // снова,должен вернуться кеш
@@ -134,7 +157,6 @@ var cachedFunc = cache(complexFunction);
 
 module.exports = {
   tickets,
-  getSum,
+  // getSum,
   getQuntityPostsByAuthor,
-  cachedFunc
 };
