@@ -1,4 +1,8 @@
 function isCoprime(a, b) {
+  if (typeof a !== "number" || typeof b !== "number") {
+    return "Not a number";
+  }
+
   var num;
 
   while (b) {
@@ -14,11 +18,15 @@ function isCoprime(a, b) {
   return false;
 }
 
-console.log(isCoprime(5, 6));
+isCoprime(5, 6);
 
 function generateRSA(p, q, e) {
+  if (typeof p !== "number" || typeof q !== "number" || typeof e !== "number") {
+    return "Not a number";
+  }
   let n = p * q;
   let eulers = (p - 1) * (q - 1);
+  console.log("eulers", eulers);
 
   if (e % e === 0 && e < eulers && isCoprime(e, eulers) === true) {
     console.log("true");
@@ -56,4 +64,9 @@ function generateRSA(p, q, e) {
   return decoded;
 }
 
-console.log(generateRSA(3, 7, 5));
+generateRSA(3, 7, 5);
+
+module.exports = {
+  isCoprime,
+  generateRSA,
+};
