@@ -178,7 +178,9 @@ AList.prototype.removeAll = function (array) {
   return (this.array = resultArr);
 };
 
-AList.prototype.sort = function () {};
+AList.prototype.sort = function () {
+  return this.array.sort();
+};
 
 AList.prototype.print = function () {
   for (var i = 0; i < this.array.length; i++) {
