@@ -1,22 +1,13 @@
 {
-  "name": "homework-1",
+  "name": "isbalanced",
   "version": "1.0.0",
   "description": "",
-  "main": "arrays.js",
+  "main": "index.js",
+  "devDependencies": {
+    "jest": "26.6.3"
+  },
   "scripts": {
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mzubkova/javaScript-tasks.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mzubkova/javaScript-tasks/issues"
-  },
-  "homepage": "https://github.com/mzubkova/javaScript-tasks#readme",
-  "devDependencies": {
-    "jest": "^26.6.3"
-  }
+  "keywords": []
 }
